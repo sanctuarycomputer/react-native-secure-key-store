@@ -62,7 +62,7 @@ public class RNSecureKeyStoreModule extends ReactContextBaseJavaModule {
     }
   }
 
-  public void setFromJava(String alias, String input) {
+  public void setFromJava(String alias, String input) throws GeneralSecurityException, IOException {
     setCipherText(alias, input);
   }
 
@@ -156,7 +156,7 @@ public class RNSecureKeyStoreModule extends ReactContextBaseJavaModule {
     }
   }
 
-  public String getFromJava(String alias) {
+  public String getFromJava(String alias) throws GeneralSecurityException, IOException {
     return getPlainText(alias);
   }
 
