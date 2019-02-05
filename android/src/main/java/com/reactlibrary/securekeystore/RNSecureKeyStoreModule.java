@@ -161,7 +161,7 @@ public class RNSecureKeyStoreModule extends ReactContextBaseJavaModule {
     }
   }
 
-  public void getFromJava(String alias) {
+  public String getFromJava(String alias) {
     try {
       return getPlainText(alias);
     } catch (FileNotFoundException fnfe) {
