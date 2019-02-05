@@ -64,6 +64,15 @@ public class RNSecureKeyStoreModule extends ReactContextBaseJavaModule {
     }
   }
 
+  public void setFromJava(String alias, String input) {
+    try {
+      setCipherText(alias, input);
+    } catch (Exception e) {
+      e.printStackTrace();
+      Log.e(Constants.TAG, "Exception: " + e.getMessage());
+    }
+  }
+
   private PublicKey getOrCreatePublicKey(String alias) throws GeneralSecurityException, IOException {
     KeyStore keyStore = KeyStore.getInstance(getKeyStore());
     keyStore.load(null);
@@ -154,6 +163,17 @@ public class RNSecureKeyStoreModule extends ReactContextBaseJavaModule {
     }
   }
 
+  public void getFromJava(String alias) {
+    try {
+      return getPlainText(alias);
+    } catch (FileNotFoundException fnfe) {
+      fnfe.printStackTrace();
+    } catch (Exception e) {
+      e.printStackTrace();
+      Log.e(Constants.TAG, "Exception: " + e.getMessage());
+    }
+  }
+
   private PrivateKey getPrivateKey(String alias) throws GeneralSecurityException, IOException {
     KeyStore keyStore = KeyStore.getInstance(getKeyStore());
     keyStore.load(null);
@@ -198,11 +218,18 @@ public class RNSecureKeyStoreModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void remove(String alias, Promise promise) {
-    Storage.resetValues(getContext(), new String[] { 
-      Constants.SKS_DATA_FILENAME + alias, 
-      Constants.SKS_KEY_FILENAME + alias, 
+    Storage.resetValues(getContext(), new String[] {
+      Constants.SKS_DATA_FILENAME + alias,
+      Constants.SKS_KEY_FILENAME + alias,
     });
     promise.resolve("cleared alias");
+  }
+
+  public void removeFromJava(String alias) {
+    Storage.resetValues(getContext(), new String[] {
+      Constants.SKS_DATA_FILENAME + alias,
+      Constants.SKS_KEY_FILENAME + alias,
+    });
   }
 
   private Context getContext() {
