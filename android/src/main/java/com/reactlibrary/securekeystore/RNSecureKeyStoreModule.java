@@ -63,12 +63,7 @@ public class RNSecureKeyStoreModule extends ReactContextBaseJavaModule {
   }
 
   public void setFromJava(String alias, String input) {
-    try {
-      setCipherText(alias, input);
-    } catch (Exception e) {
-      e.printStackTrace();
-      Log.e(Constants.TAG, "Exception: " + e.getMessage());
-    }
+    setCipherText(alias, input);
   }
 
   private PublicKey getOrCreatePublicKey(String alias) throws GeneralSecurityException, IOException {
@@ -162,14 +157,7 @@ public class RNSecureKeyStoreModule extends ReactContextBaseJavaModule {
   }
 
   public String getFromJava(String alias) {
-    try {
-      return getPlainText(alias);
-    } catch (FileNotFoundException fnfe) {
-      fnfe.printStackTrace();
-    } catch (Exception e) {
-      e.printStackTrace();
-      Log.e(Constants.TAG, "Exception: " + e.getMessage());
-    }
+    return getPlainText(alias);
   }
 
   private PrivateKey getPrivateKey(String alias) throws GeneralSecurityException, IOException {
