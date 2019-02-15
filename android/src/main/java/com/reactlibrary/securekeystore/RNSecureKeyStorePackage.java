@@ -19,7 +19,7 @@ public class RNSecureKeyStorePackage implements ReactPackage {
   @Override
   public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
     List<NativeModule> modules = new ArrayList<>();
-    this.RNSecureKeyStoreModule = new RNSecureKeyStoreModule(reactContext));
+    this.RNSecureKeyStoreModule = new RNSecureKeyStoreModule(reactContext);
     modules.add(this.RNSecureKeyStoreModule);
     return modules;
 
