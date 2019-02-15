@@ -18,7 +18,11 @@ import com.facebook.react.uimanager.ViewManager;
 public class RNSecureKeyStorePackage implements ReactPackage {
   @Override
   public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-    return Arrays.<NativeModule>asList(new RNSecureKeyStoreModule(reactContext));
+    List<NativeModule> modules = new ArrayList<>();
+    this.RNSecureKeyStoreModule = new RNSecureKeyStoreModule(reactContext));
+    modules.add(this.RNSecureKeyStoreModule);
+    return modules;
+
   }
 
   @Override
