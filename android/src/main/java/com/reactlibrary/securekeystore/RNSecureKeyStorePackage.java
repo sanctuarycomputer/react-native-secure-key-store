@@ -16,16 +16,18 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ViewManager;
 
 public class RNSecureKeyStorePackage implements ReactPackage {
-  @Override
-  public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-    List<NativeModule> modules = new ArrayList<>();
-    this.rnSecureKeyStoreModule = new RNSecureKeyStoreModule(reactContext);
-    modules.add(this.rnSecureKeyStoreModule);
-    return modules;
-  }
+    public static RNSecureKeyStoreModule rnSecureKeyStoreModule;
 
-  @Override
-  public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
-    return Collections.emptyList();
-  }
+    @Override
+    public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
+        List<NativeModule> modules = new ArrayList<>();
+        this.rnSecureKeyStoreModule = new RNSecureKeyStoreModule(reactContext);
+        modules.add(this.rnSecureKeyStoreModule);
+        return modules;
+    }
+
+    @Override
+    public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
+        return Collections.emptyList();
+    }
 }
